@@ -1,0 +1,34 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ modalAction === "edit" ? "Editar" : "Deletar" }}:
+      {{ selectedItem?.name }}
+    </h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    @if(modalAction !== "edit"){
+    <div class="text-center">
+      <h3>Deseja mesmo excluir este item ?</h3>
+      <button type="button" class="btn btn-light btn-lg" (click)="modal.close('Dont delete item')">Não</button>
+      <button type="button" class="btn btn-danger btn-lg" (click)="removeItem(selectedItem?.id)">Sim</button>
+    </div>
+    }
+  </div>
+  @if(modalAction === "edit"){
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="modal.close('Save click')"
+    >
+      Save
+    </button>
+  </div>
+  }
+</ng-template>

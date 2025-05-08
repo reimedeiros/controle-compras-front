@@ -1,0 +1,70 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="mb-3 row">
+    <div class="col-12">
+      <label for="name" class="form-label">Nome</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        placeholder="Insira aqui o nome do produto"
+        [(ngModel)]="formData.name"
+      />
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <div class="col-9">
+      <label for="quantity" class="form-label">Quantidade</label>
+      <input
+        type="number"
+        class="form-control"
+        id="quantity"
+        name="quantity"
+        placeholder="10.5"
+        [(ngModel)]="formData.quantity"
+      />
+    </div>
+    <div class="col-3">
+      <label for="unity" class="form-label">Unidade</label>
+      <select
+        class="form-select"
+        id="unity"
+        aria-label="Default select example"
+        name="unity"
+        [(ngModel)]="formData.unity"
+      >
+        <option selected>Selecione</option>
+        @for (unit of UNITS; track $index) {
+        <option value="{{ unit.abrev }}">{{ unit.name }}</option>
+        }
+      </select>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <div class="col-12">
+      <label for="category" class="form-label">Categoria</label>
+      <select
+        class="form-select mb-3"
+        id="category"
+        aria-label="Default select example"
+        name="category"
+        [(ngModel)]="formData.category"
+      >
+        <option selected>Selecione</option>
+        @for (category of categories; track $index) {
+        <option value="{{ category.id }}">{{ category.name }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <div class="mb-3 row text-end">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
+</form>
+
+@if (show) {
+<ngb-toast header="Hello" [autohide]="false" (hidden)="show = false">
+  I am a simple static toast with a header.
+</ngb-toast>
+}
