@@ -64,7 +64,7 @@ export class FormComponent implements OnInit {
       unity: this.formData.unity,
     };
 
-    this.sendApiResponse('http://localhost:3000/inventory', body)
+    this.sendApiResponse('http://localhost:3000/inventory', body);
   }
 
   async getApiResponse(url: string): Promise<any> {
@@ -79,7 +79,11 @@ export class FormComponent implements OnInit {
       const response = this.apiService.postApi(url, body);
       const data = await firstValueFrom(response);
 
-      if(data) {this.show = true};
+      if (data) {
+        this.show = true;
+      }
+
+      window.location.reload();
     } catch (error) {
       console.error('Erro na requisição:', error);
     }

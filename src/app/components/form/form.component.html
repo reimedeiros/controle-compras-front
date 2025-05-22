@@ -25,7 +25,7 @@
       />
     </div>
     <div class="col-3">
-      <label for="unity" class="form-label">Unidade</label>
+      <label for="unity" class="form-label">Medida</label>
       <select
         class="form-select"
         id="unity"
@@ -62,9 +62,3 @@
     <button type="submit" class="btn btn-primary">Enviar</button>
   </div>
 </form>
-
-@if (show) {
-<ngb-toast header="Hello" [autohide]="false" (hidden)="show = false">
-  I am a simple static toast with a header.
-</ngb-toast>
-}

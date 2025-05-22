@@ -55,7 +55,10 @@ export class ModalComponent {
     this.apiService.deleteApi(id).subscribe({
       next: (response) => {
         console.log('Deletado com sucesso:', response);
-		this.cdr.detectChanges();
+        if (this.modal) {
+          this.modal.close('Item deletado');
+        }
+        window.location.reload();
       },
       error: (err) => {
         console.error('Erro ao deletar:', err);
